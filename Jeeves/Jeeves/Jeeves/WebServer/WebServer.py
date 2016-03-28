@@ -18,13 +18,15 @@ class WebServer:
         while True:
             client_connection, client_address = self.listener.accept()
             request = client_connection.recv(1024)
+            if request == b"":
+                continue
             parsed_request = ParsedRequest(request)
             if loud:
                 print("Request received for URL: " + str(parsed_request.location))
             response = self.build_response(parsed_request)
             if loud:
                 print("Response status: " + str(response.status))
-            client_connection.sendall(response.complete_response())
+            client_connection.sendall(response.complete_binary_response())
             client_connection.close()
             
     def build_response(self, request):
