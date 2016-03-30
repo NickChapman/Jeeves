@@ -28,11 +28,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="404.html" />
-    <Content Include="basic_jeeves.p" />
+    <Content Include="basic_jeeves.pyp" />
     <Content Include="favicon.ico" />
     <Content Include="index.html" />
     <Content Include="just_html.html" />
-    <Content Include="python_error.p" />
+    <Content Include="python_error.pyp" />
     <Content Include="test_image.jpg" />
     <Content Include="test_pdf.pdf" />
   </ItemGroup>

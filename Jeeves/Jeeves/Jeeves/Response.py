@@ -2,7 +2,7 @@ from . WebServer.Config import ServerConfig
 import mimetypes
 # We use OS to check if files exist
 import os
-# These next parts are for parsing a .p page
+# These next parts are for parsing a .pyp page
 import subprocess
 import string
 import random
@@ -30,7 +30,7 @@ class JeevesResponse:
     
     def load_file_bytes(self, file):
         file_nanme, file_extension = os.path.splitext(file)
-        if file_extension.lower() == ".p":
+        if file_extension.lower() == ".pyp":
             return self.parse_jeeves_page(file)
         with open(file, 'rb') as f:
             contents = f.readlines()
@@ -42,7 +42,7 @@ class JeevesResponse:
         if not os.path.isfile(file_path):
             # We are going to serve the 404
             mime = "text/html"
-        elif file_extension.lower() == ".p":
+        elif file_extension.lower() == ".pyp":
             mime = "text/html"
         else:
            mime = mimetypes.guess_type(file_path)[0]
@@ -86,7 +86,7 @@ class JeevesResponse:
                 else:
                     error_reporting_flag = "0"
                 self.status = "500 Internal Server Error"
-                return self.parse_jeeves_page(ServerConfig.SERVER_ROOT + "/python_error.p", [error, error_reporting_flag])
+                return self.parse_jeeves_page(ServerConfig.SERVER_ROOT + "/python_error.pyp", [error, error_reporting_flag])
             html_counter = 0
             while(token in python_output):
                 python_output = python_output.replace(token, html_parts[html_counter], 1)
