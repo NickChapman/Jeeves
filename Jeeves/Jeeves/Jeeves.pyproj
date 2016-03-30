@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d44ef0de-cc0a-49d7-8621-0ef1ac2b6798</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>main.py</StartupFile>
+    <StartupFile>launch_server.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,22 +22,22 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="main.py" />
-    <Compile Include="Jeeves\__init__.py">
+    <Compile Include="launch_server.py" />
+    <Compile Include="JeevesServer\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Jeeves\Response.py">
+    <Compile Include="JeevesServer\Response.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Jeeves\WebServer\Config.py" />
-    <Compile Include="Jeeves\WebServer\WebServer.py" />
-    <Compile Include="Jeeves\WebServer\__init__.py">
+    <Compile Include="JeevesServer\WebServer\Config.py" />
+    <Compile Include="JeevesServer\WebServer\WebServer.py" />
+    <Compile Include="JeevesServer\WebServer\__init__.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Jeeves\" />
-    <Folder Include="Jeeves\WebServer\" />
+    <Folder Include="JeevesServer\" />
+    <Folder Include="JeevesServer\WebServer\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
