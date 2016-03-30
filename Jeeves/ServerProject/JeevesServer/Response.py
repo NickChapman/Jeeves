@@ -190,7 +190,7 @@ class JeevesResponse:
             line_found = False
             files_lines = f.readlines()
             for i, line in enumerate(files_lines):
-                if error_code in line and i > false_line_number:
+                if error_code in line and i >= false_line_number:
                     real_line_number_for_error = i + 1
                     line_found = True
                     break

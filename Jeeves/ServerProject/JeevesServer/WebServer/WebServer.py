@@ -51,28 +51,18 @@ class ParsedRequest:
         # Parse the first line since it's unique
         top_line = self.request_parts[0].split(" ")
         self.type = top_line[0]
-        self.location = self.process_GET_request(top_line[1])
+        self.location = top_line[1].split("?")[0]
+        self.process_GET_request(top_line[1])
         self.protocol = top_line[2]
         # Parse all the rest of the lines
         process_post = False
-
         for part in self.request_parts[1:]:
             if part != "":
                 if not process_post:
                     line = [x.strip() for x in part.split(":")]
                     self.headers[line[0]] = line[1]
                 else:
-                    self.headers["POST"] = urllib.parse.parse_qs(part)
-                    for key in self.headers["POST"]:
-                        if len(self.headers["POST"][key]) == 1:
-                            self.headers["POST"][key] = self.headers["POST"][key][0]
-                    """
-                    post_pairs = part.split("&")
-                    for pair in post_pairs:
-                        var = pair[:pair.find("=")]
-                        value = pair[pair.find("=") + 1:]
-                        self.headers["POST"][var] = value
-                    """
+                    self.process_POST_request(part)
             else:
                 process_post = True
 
@@ -83,7 +73,9 @@ class ParsedRequest:
         for var in self.headers["GET"]:
             if len(self.headers["GET"][var]) == 1:
                 self.headers["GET"][var] = self.headers["GET"][var][0]
-        return url.path
 
     def process_POST_request(self, request_string):
-        pass
+        self.headers["POST"] = urllib.parse.parse_qs(request_string)
+        for key in self.headers["POST"]:
+            if len(self.headers["POST"][key]) == 1:
+                self.headers["POST"][key] = self.headers["POST"][key][0]

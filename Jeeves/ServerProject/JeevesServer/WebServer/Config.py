@@ -6,4 +6,4 @@ class ServerConfig:
     RESPONSE_TYPE = "jeeves"
     REQUEST_LOGGING = True
     ERROR_REPORTING = True
-    LIST_DIRECTORY_CONTENTS = True
+    LIST_DIRECTORY_CONTENTS = False
