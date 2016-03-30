@@ -17,7 +17,7 @@ for i in range(1, 101):
 	print("<li>Generated bullet point #" + str(i) + "</li>")
 	
 	<?</ul>
-    <p>For a complete list of test pages please see the TestPages project</p>
+    <p>For a complete list of test pages please see the DocumentRoot project</p>
     <img src="/test_image.jpg" />
 </body>
 </html>
