@@ -16,7 +16,7 @@ todays_date_string = str(datetime.date.today())
 	<p>?>print("The date above was generated server side. As was this text.", end="")<?</p>
 	?>
 print("<ul>")
-	for i in range(1, 101):
+for i in range(1, 101):
 	print("<li>Generated bullet point #" + str(i) + "</li>")
 	
 	<?</ul>

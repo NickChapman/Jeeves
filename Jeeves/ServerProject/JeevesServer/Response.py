@@ -130,9 +130,9 @@ class JeevesResponse:
             temp = open("./" + token + ".py", "w")
             temp.write(python_string)
             temp.close()
-            proc = subprocess.Popen(["python", token + ".py"] + additional_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            python_output = proc.communicate()[0].decode('utf-8')
-            error = proc.communicate()[1].decode('utf-8')
+            proc = subprocess.run(["python", token + ".py"] + additional_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            python_output = proc.stdout.decode('utf-8')
+            error = proc.stderr.decode('utf-8')
             self.cleanup(token)
             if error != "":
                 if ServerConfig.ERROR_REPORTING:
