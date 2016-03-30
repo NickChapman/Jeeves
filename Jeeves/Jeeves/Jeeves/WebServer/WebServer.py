@@ -54,6 +54,3 @@ class ParsedRequest:
 
 class BasicResponse:
     pass
-
-if __name__ == "__main__":
-    print("Worked")
