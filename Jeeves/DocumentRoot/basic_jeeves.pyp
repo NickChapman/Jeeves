@@ -1,4 +1,5 @@
 ﻿import datetime
+import RequestHeaders
 todays_date_string = str(datetime.date.today())
 <?
 <!DOCTYPE html>
@@ -11,8 +12,10 @@ todays_date_string = str(datetime.date.today())
 <body>
     <h1>This page just contains HTML</h1>
     <p>?>print("Today's date is " + todays_date_string, end="")<?</p>
+	<p>?>print("Your user agent string is " + str(RequestHeaders["User-Agent"]), end="")<?</p>
 	<p>?>print("The date above was generated server side. As was this text.", end="")<?</p>
-	<ul>?>
+	?>
+print("<ul>")
 for i in range(1, 101):
 	print("<li>Generated bullet point #" + str(i) + "</li>")
 	

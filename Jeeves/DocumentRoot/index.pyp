@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,3 +10,4 @@
     <h1>Welcome to the Jeeves project!</h1>
 </body>
 </html>
+?>
