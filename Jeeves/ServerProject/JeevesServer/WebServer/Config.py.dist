@@ -6,4 +6,5 @@ class ServerConfig:
     RESPONSE_TYPE = "jeeves"
     REQUEST_LOGGING = True
     ERROR_REPORTING = True
-    LIST_DIRECTORY_CONTENTS = False
+    LIST_DIRECTORY_CONTENTS = True
+	PYTHON_SYS_COMMAND = "python"

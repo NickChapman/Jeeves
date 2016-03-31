@@ -111,8 +111,7 @@ class JeevesResponse:
             for line in f.readlines():
                 file_string += line
             token = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits + string.ascii_lowercase) for _ in range(64))
-            if "import RequestHeaders" in file_string:
-                file_string = self.pass_request_headers_to_page(file_string, token)
+            file_string = self.manage_page_import_requests(file_string, token)
             file_pieces = file_string.split("<?")
             python_parts = []
             html_parts = []
@@ -130,7 +129,7 @@ class JeevesResponse:
             temp = open("./" + token + ".py", "w")
             temp.write(python_string)
             temp.close()
-            proc = subprocess.run(["python3", token + ".py"] + additional_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            proc = subprocess.run([ServerConfig.PYTHON_SYS_COMMAND, token + ".py"] + additional_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             python_output = proc.stdout.decode('utf-8')
             error = proc.stderr.decode('utf-8')
             self.cleanup(token)
@@ -156,6 +155,15 @@ class JeevesResponse:
         os.remove(token + ".py")
         if os.path.isfile(token + ".headers"):
             os.remove(token + ".headers")
+        if os.path.isfile(token + ".root"):
+            os.remove(token + ".root")
+
+    def manage_page_import_requests(self, file_string, token):
+        if "import RequestHeaders" in file_string:
+            file_string = self.pass_request_headers_to_page(file_string, token)
+        if "import ServerRoot" in file_string:
+            file_string = self.pass_server_root_to_page(file_string, token)
+        return file_string
 
     def pass_request_headers_to_page(self, file_string, token):
         """Alters the file_string so that the request headers are available
@@ -167,6 +175,14 @@ class JeevesResponse:
             pickle.dump(self.request.headers, header_file)
         import_code = "import pickle\nwith open(\"" + token + ".headers\", \"rb\") as f:\n\tRequestHeaders=pickle.load(f)"
         file_string = file_string.replace("import RequestHeaders", import_code)
+        return file_string
+
+    def pass_server_root_to_page(self, file_string, token):
+        # Serialize and write the headers to file
+        with open(token + ".root", "wb") as root_file:
+            pickle.dump(ServerConfig.SERVER_ROOT, root_file)
+        import_code = "import pickle\nwith open(\"" + token + ".root\", \"rb\") as f:\n\tServerRoot=pickle.load(f)"
+        file_string = file_string.replace("import ServerRoot", import_code)
         return file_string
 
     def fix_error_message_line_number(self, error_message, file_path):

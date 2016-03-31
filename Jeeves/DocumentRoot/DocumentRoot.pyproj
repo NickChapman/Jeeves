@@ -30,10 +30,14 @@
   <ItemGroup>
     <Content Include="404.pyp" />
     <Content Include="basic_jeeves.pyp" />
+    <Content Include="example-com.html" />
     <Content Include="favicon.ico" />
     <Content Include="index.pyp" />
     <Content Include="just_html.html" />
     <Content Include="500.pyp" />
+    <Content Include="test_directory\footer.html" />
+    <Content Include="test_directory\header.html" />
+    <Content Include="test_directory\index.pyp" />
     <Content Include="test_form.pyp" />
     <Content Include="test_image.jpg" />
     <Content Include="test_pdf.pdf" />

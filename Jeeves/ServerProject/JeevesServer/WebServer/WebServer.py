@@ -52,7 +52,8 @@ class ParsedRequest:
         top_line = self.request_parts[0].split(" ")
         self.type = top_line[0]
         self.location = top_line[1].split("?")[0]
-        self.process_GET_request(top_line[1])
+        if self.type == "GET":
+            self.process_GET_request(top_line[1])
         self.protocol = top_line[2]
         # Parse all the rest of the lines
         process_post = False
@@ -64,7 +65,8 @@ class ParsedRequest:
                 else:
                     self.process_POST_request(part)
             else:
-                process_post = True
+                if self.type == "POST":
+                    process_post = True
 
 
     def process_GET_request(self, request_string):
