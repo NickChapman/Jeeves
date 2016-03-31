@@ -214,6 +214,7 @@ ModelManifest.xml
 ####################################################################
 # Python stuff
 ####################################################################
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -299,5 +300,10 @@ ENV/
 
 # Spyder project settings
 .spyderproject
-Status API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Contact He
+
+####################################################################
+# Our stuff
+####################################################################
+
+.DS_Store
+Jeeves/ServerProject/JeevesServer/WebServer/Config.py
