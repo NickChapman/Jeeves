@@ -86,7 +86,7 @@ class JeevesResponse:
 
     def get_content_type(self, file_path):
         file_name, file_extension = os.path.splitext(file_path)
-        if not os.path.isfile(file_path) or self.status == "404 Not FOund":
+        if not os.path.isfile(file_path) or self.status == "404 Not Found":
             # We are going to serve the 404
             mime = "text/html"
         elif self.status != "200 OK":

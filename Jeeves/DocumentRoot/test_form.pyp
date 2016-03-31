@@ -17,10 +17,10 @@ if len(RequestHeaders["GET"]) > 0:
     print("</ul>")
 if "message" in RequestHeaders["POST"]:
     print("<p>You said ", end="")
-    print(html.unescape(RequestHeaders["POST"]["message"]), end="")
+    print(RequestHeaders["POST"]["message"], end="")
     print("</p>")
     <?
-    <form action="" method="post">
+    <form action="" method=POST>
         <input type="text" name="message" /><br />
         <input type="submit" />
     </form>
