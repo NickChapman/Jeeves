@@ -6,7 +6,7 @@ another file and then write pages in almost entirely python.
 # Mind you, ServerRoot is not a python module. We preprocess to serve it to you.
 import ServerRoot
 
-with open(ServerRoot + "/test_directory/header.html", "r") as f:
+with open("header.html", "r") as f:
 	for line in f.readlines():
 		print(line)
 
